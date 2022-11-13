@@ -1,0 +1,18 @@
+extends template.pug
+
+block body
+	div(class = "row h-25")
+		div(class = "col-md-12")
+	div(class = "row h-75")
+		div(class = "col-md-3")
+		div(class = "col-md-6 text-center")
+			h1(class = "user-select-none" style = "font-family: 'Lobster', cursive;") Alex
+			div(class = "user-select-none") Your <b>FREE</b> portal to academia
+			form(action = "" method = "get")
+				input(placeholder = "Search" class = "form-control form-control-lg shadow-none" name = "q" autocomplete = "off")
+		div(class = "col-md-3")
+
+block footer
+	link(rel="preconnect" href="https://fonts.googleapis.com")
+	link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+	link(href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet")

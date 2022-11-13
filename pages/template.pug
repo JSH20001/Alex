@@ -1,0 +1,31 @@
+doctype html
+html(class = "p-0 m-0")
+	head
+		title #{title} - Alex
+	body(class = "p-0 m-0")
+		div(class = "container-fluid")
+			div(class = "row")
+				div(class = "col-md-1 text-center bg-dark text-light d-print-none")
+					a(href = "/" class = "link-light" title = "Search Database")
+						i(class="bi bi-search nav-icon")
+					br
+					a(href = "/docs" class = "link-light" title = "Saved Documents")
+						i(class="bi bi-save nav-icon")
+					hr
+					a(href = "/write" class = "link-light" title = "Write Paper")
+						i(class="bi bi-pencil-square nav-icon")
+					block menu
+				div(class = "col-md-11 vh-100 overflow-hidden")
+					block body
+	footer
+		link(href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous")
+		script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous")
+
+		link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css")
+
+		script(src="https://code.jquery.com/jquery-3.6.1.slim.min.js" integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous")
+
+		link(rel="stylesheet" href="/css.css")
+
+		block footer
+

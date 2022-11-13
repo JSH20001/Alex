@@ -1,0 +1,47 @@
+extends template.pug
+
+block body
+	div(class = "row")
+		div(class = "col-md-6 pt-2")
+			form(action = "/write" method = "POST")
+				textarea(id = "mde" name = "article")
+				button(class = "btn btn-lg" type = "button" title = "Attach File")
+					i(class="bi bi-paperclip func-icon")
+				button(class = "btn btn-lg" type = "button" title = "Save to Documents" id = "save-button")
+					i(class="bi bi-hdd func-icon")
+				button(class = "btn btn-lg btn-dark" type = "submit") PUBLISH
+
+		div(class = "col-md-6 pt-2 vh-100 overflow-auto" id = "display")
+			h1 We Support Markdown
+			p <b>Alex</b> supports <a href = "https://www.markdownguide.org/cheat-sheet/" target = "_blank">Markdown</a>! Feel free to include
+			ul
+				li Fully formatted text
+				li Lists
+				li Links
+				li Tables
+				li Quotes
+				li Code
+				li and Images
+
+			p in all your writings.
+
+block footer
+	link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/default.min.css")
+	script(src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js")
+
+	script(src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/13.0.1/markdown-it.js" integrity="sha512-yucm4wm2T2mZNzxtKGWQLTsMAGI+KNFRLsfFDNO9SqdMn9eauAORCybt1UnXRAAlrxJoFpdLSR9lhfuCKx22kQ==" crossorigin="anonymous" referrerpolicy="no-referrer")
+	script.
+		var md = window.markdownit();
+
+		$("#mde").on("input", e => {
+			$("#display").html(md.render(e.target.value))
+			document.title = /# (.+)/.exec(e.target.value)[1] + " - Alex"
+			hljs.highlightAll()
+		})
+		$("#save-button").click(() => {
+			fetch("/save", {
+				method: "POST",
+				body: JSON.stringify({article: $("#mde").val()})
+			})
+			console.log($("#mde").val())
+		})

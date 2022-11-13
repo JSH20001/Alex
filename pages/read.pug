@@ -1,0 +1,19 @@
+extends template.pug
+
+block menu
+	hr
+	button(class = "btn btn-lg" onClick = "" title = "Edit Document")
+		i(class="bi bi-pen nav-icon text-light")
+	button(class = "btn btn-lg" onClick = "reference()" title = "Copy Reference")
+		i(class="bi bi-text-paragraph nav-icon text-light")
+
+block body
+	div(class = "row")
+		div(class = "col-md-12 p-4") !{article}
+
+block footer
+	div(id = "ref" class = "d-none") [#{title}]()
+	script.
+		function reference(){
+			console.log("Happy")
+		}
